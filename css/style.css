@@ -5,7 +5,7 @@ body {
   background-color: #e5e5e5;
 }
 .wrapper {
-  width: 1200px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -105,25 +105,25 @@ nav li a {
     transform: translateX(0) translateY(0) rotate(0deg);
   }
   20% {
-    transform: translateX(20vw) translateY(0) rotate(360deg);
+    transform: translateX(min(20vw, 240px)) translateY(0) rotate(360deg);
   }
   30% {
-    transform: translateX(20vw) translateY(30px) rotate(360deg);
+    transform: translateX(min(20vw, 240px)) translateY(30px) rotate(360deg);
   }
   50% {
-    transform: translateX(33vw) translateY(30px) rotate(540deg);
+    transform: translateX(min(33vw, 400px)) translateY(30px) rotate(540deg);
   }
   60% {
-    transform: translateX(33vw) translateY(50px) rotate(540deg);
+    transform: translateX(min(33vw, 400px)) translateY(50px) rotate(540deg);
   }
   75% {
-    transform: translateX(50vw) translateY(50px) rotate(900deg);
+    transform: translateX(min(50vw, 600px)) translateY(50px) rotate(900deg);
   }
   80% {
-    transform: translateX(50vw) translateY(85px) rotate(900deg);
+    transform: translateX(min(50vw, 600px)) translateY(85px) rotate(900deg);
   }
   100% {
-    transform: translateX(80vw) translateY(85px) rotate(1260deg);
+    transform: translateX(min(70vw, 840px)) translateY(85px) rotate(1260deg);
   }
 }
 
