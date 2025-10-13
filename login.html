@@ -268,9 +268,7 @@
 
               <div class="form-footer">
                 <a href="#" class="forgot-password">忘記密碼？</a>
-                <a href="register.html" class="register-link"
-                  >還不是會員？註冊</a
-                >
+                <a href="#" class="register-link">還不是會員？註冊</a>
               </div>
             </form>
 
@@ -311,42 +309,5 @@
         </div>
       </footer>
     </div>
-    <script>
-      // 取得表單元素
-      const loginForm = document.getElementById("loginForm");
-
-      // 表單提交處理
-      loginForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        // 取得輸入值
-        const username = document.getElementById("username").value;
-        const password = document.getElementById("password").value;
-
-        // 這裡處理登入邏輯
-        console.log("登入資訊:", { username, password });
-
-        // 簡單的驗證示範
-        if (username && password) {
-          alert("登入成功！");
-          // 可以導向其他頁面
-          // window.location.href = 'index.html';
-        }
-      });
-
-      // Line 登入按鈕
-      const lineBtn = document.querySelector(".btn-line");
-      lineBtn.addEventListener("click", () => {
-        console.log("使用 Line 登入");
-        alert("Line 登入功能開發中...");
-      });
-
-      // 忘記密碼
-      const forgotPassword = document.querySelector(".forgot-password");
-      forgotPassword.addEventListener("click", (e) => {
-        e.preventDefault();
-        alert("請聯繫客服重置密碼");
-      });
-    </script>
   </body>
 </html>
