@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>結帳</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <style>
+    main {
+      background-color: #ccc;
+      padding: 64px;
+    }
+    /* 結帳頁面主體 */
+    .checkout-page {
+      min-height: calc(100vh - 64px - 300px);
+      padding: 48px 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .page-title {
+      font-size: 32px;
+      color: #333;
+      margin-bottom: 32px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .checkout-wrapper {
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    /* 訂單摘要 */
+    .order-summary {
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 2px solid #f0f0f0;
+    }
+
+    .order-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    .order-table thead {
+      background-color: #f8f9fa;
+    }
+
+    .order-table th {
+      padding: 12px;
+      text-align: left;
+      font-weight: 600;
+      color: #666;
+      font-size: 14px;
+      border-bottom: 2px solid #e5e5e5;
+    }
+
+    .order-table td {
+      padding: 16px 12px;
+      color: #333;
+      font-size: 16px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .delete-btn {
+      background: none;
+      border: none;
+      color: #dc3545;
+      font-size: 18px;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .delete-btn:hover {
+      color: #c82333;
+    }
+
+    /* 訂單總計 */
+    .order-total {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 16px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .total-price {
+      color: #1597fb;
+      font-size: 20px;
+    }
+
+    /* 優惠碼區塊 */
+    .coupon-section {
+      display: flex;
+      gap: 8px;
+      max-width: 400px;
+      margin-left: auto;
+    }
+
+    .coupon-input {
+      flex: 1;
+      padding: 10px 16px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: border-color 0.3s ease;
+    }
+
+    .coupon-input:focus {
+      outline: none;
+      border-color: #1597fb;
+    }
+
+    .coupon-btn {
+      padding: 10px 24px;
+      background: #1597fb;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .coupon-btn:hover {
+      background: #0d6ebd;
+    }
+
+    /* 結帳表單 */
+    .checkout-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      width: 100%;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      font-family: inherit;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #1597fb;
+      box-shadow: 0 0 0 3px rgba(21, 151, 251, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    /* 送出按鈕 */
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 12px;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .submit-btn:hover {
+      background: #c82333;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(220, 53, 69, 0.3);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+  </style>
+  <body>
+    <div class="wrapper">
+      <header>
+        <a href="index.html">
+          <img src="img/logo.png" class="logo" height="50" alt="#" />
+        </a>
+        <nav>
+          <ul>
+            <li><a href="interactiveDemo.html">互動範例</a></li>
+            <li><a href="otherAnimations.html">其他動畫</a></li>
+            <li><a href="products.html">課程購買</a></li>
+            <li><a href="login.html">會員登入/註冊</a></li>
+            <li><a href="cart.html">購物車</a></li>
+          </ul>
+        </nav>
+      </header>
+      <!-- 結帳 -->
+      <main class="checkout-page">
+        <div class="container">
+          <h1 class="page-title">訂單資料</h1>
+
+          <div class="checkout-wrapper">
+            <!-- 訂單商品列表 -->
+            <div class="order-summary">
+              <table class="order-table">
+                <thead>
+                  <tr>
+                    <th>品名</th>
+                    <th>數量</th>
+                    <th>價格</th>
+                    <th>刪除</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="order-item">
+                    <td>HTML 完整開發課程</td>
+                    <td>x1</td>
+                    <td>$2,999</td>
+                    <td>
+                      <button class="delete-btn">
+                        <i class="bi bi-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="order-total">
+                <span>總計</span>
+                <span class="total-price">$2,999</span>
+              </div>
+
+              <!-- 優惠碼 -->
+              <div class="coupon-section">
+                <input
+                  type="text"
+                  placeholder="輸入優惠碼"
+                  class="coupon-input"
+                />
+                <button class="coupon-btn">使用</button>
+              </div>
+            </div>
+
+            <!-- 結帳表單 -->
+            <form class="checkout-form" id="checkoutForm">
+              <div class="form-group">
+                <input type="text" id="name" placeholder="姓名" required />
+              </div>
+
+              <div class="form-group">
+                <input type="tel" id="phone" placeholder="電話" required />
+              </div>
+
+              <div class="form-group">
+                <input type="email" id="email" placeholder="信箱" required />
+              </div>
+
+              <div class="form-group">
+                <input type="text" id="address" placeholder="地址" required />
+              </div>
+
+              <div class="form-group">
+                <textarea id="message" placeholder="留言" rows="4"></textarea>
+              </div>
+              <a class="submit-btn" href="payment.html">送出訂單</a>
+              <!-- <button type="submit" class="submit-btn">送出訂單</button> -->
+            </form>
+          </div>
+        </div>
+      </main>
+      <footer>
+        <div class="logo-footer">
+          <img src="./img/logo-footer.png" alt="logo-footer" />
+        </div>
+        <div class="socials">
+          <ul>
+            <li>
+              <a href="#"> <i class="bi bi-envelope"></i>Email </a>
+            </li>
+            <li>
+              <a href="#"> <i class="bi bi-facebook"></i>Facebook </a>
+            </li>
+            <li>
+              <a href="#"> <i class="bi bi-instagram"></i>Instagram </a>
+            </li>
+          </ul>
+        </div>
+        <div class="copyright">
+          <p>© 2025 All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>登入註冊</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <style>
+    main {
+      background-color: #ccc;
+      padding: 64px;
+    }
+    /* 登入頁面主體 */
+    .login-page {
+      min-height: calc(100vh - 64px - 300px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 20px;
+    }
+
+    .login-container {
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .login-card {
+      background: white;
+      border-radius: 16px;
+      padding: 48px 40px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-card h1 {
+      text-align: center;
+      font-size: 22px;
+      color: #333;
+      margin-bottom: 36px;
+      font-weight: 600;
+    }
+
+    /* 表單樣式 */
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .input-group {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-group i {
+      position: absolute;
+      left: 16px;
+      color: #999;
+      font-size: 18px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 14px 16px 14px 48px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .input-group input:focus {
+      outline: none;
+      border-color: #1597fb;
+      box-shadow: 0 0 0 3px rgba(21, 151, 251, 0.1);
+    }
+
+    /* 登入按鈕 */
+    .btn-login {
+      width: 100%;
+      padding: 14px;
+      background: #1e5a8e;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 8px;
+    }
+
+    .btn-login:hover {
+      background: #164a73;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(30, 90, 142, 0.3);
+    }
+
+    .btn-login:active {
+      transform: translateY(0);
+    }
+
+    /* 表單底部 */
+    .form-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    .form-footer a {
+      color: #1597fb;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .form-footer a:hover {
+      color: #0d6ebd;
+      text-decoration: underline;
+    }
+
+    /* 提示框 */
+    .info-box {
+      background: #f8f9fa;
+      border-left: 4px solid #1597fb;
+      padding: 14px;
+      border-radius: 6px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .info-box i {
+      color: #1597fb;
+      font-size: 18px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .info-box p {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* 分隔線 */
+    .divider {
+      display: flex;
+      align-items: center;
+      margin: 32px 0;
+      color: #999;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #ddd;
+    }
+
+    .divider span {
+      padding: 0 16px;
+      font-size: 14px;
+    }
+
+    /* Line 登入按鈕 */
+    .btn-line {
+      width: 100%;
+      padding: 14px;
+      background: #06c755;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-line:hover {
+      background: #05b04c;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(6, 199, 85, 0.3);
+    }
+
+    .btn-line i {
+      font-size: 20px;
+    }
+  </style>
+  <body>
+    <div class="wrapper">
+      <header>
+        <a href="index.html">
+          <img src="img/logo.png" class="logo" height="50" alt="#" />
+        </a>
+        <nav>
+          <ul>
+            <li><a href="interactiveDemo.html">互動範例</a></li>
+            <li><a href="otherAnimations.html">其他動畫</a></li>
+            <li><a href="products.html">課程購買</a></li>
+            <li><a href="login.html">會員登入/註冊</a></li>
+            <li><a href="cart.html">購物車</a></li>
+          </ul>
+        </nav>
+      </header>
+      <!-- 登入區域 -->
+      <main class="login-page">
+        <div class="login-container">
+          <div class="login-card">
+            <h1>您可以透過以下方式登入</h1>
+
+            <form class="login-form" id="loginForm">
+              <div class="input-group">
+                <i class="bi bi-person-badge"></i>
+                <input
+                  type="text"
+                  id="username"
+                  placeholder="身分證字號 / 護照號碼"
+                  required
+                />
+              </div>
+
+              <div class="input-group">
+                <i class="bi bi-lock-fill"></i>
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="密碼"
+                  required
+                />
+              </div>
+
+              <button type="submit" class="btn-login">登入</button>
+
+              <div class="form-footer">
+                <a href="#" class="forgot-password">忘記密碼？</a>
+                <a href="register.html" class="register-link"
+                  >還不是會員？註冊</a
+                >
+              </div>
+            </form>
+
+            <div class="divider">
+              <span>或</span>
+            </div>
+
+            <button class="btn-line">
+              <i class="bi bi-line"></i>
+              使用 Line 登入
+            </button>
+          </div>
+        </div>
+      </main>
+      <footer>
+        <div class="logo-footer">
+          <img src="./img/logo-footer.png" alt="logo-footer" />
+        </div>
+        <div class="socials">
+          <ul>
+            <li>
+              <a href="#"> <i class="bi bi-envelope"></i>Email </a>
+            </li>
+            <li>
+              <a href="#"> <i class="bi bi-facebook"></i>Facebook </a>
+            </li>
+            <li>
+              <a href="#"> <i class="bi bi-instagram"></i>Instagram </a>
+            </li>
+          </ul>
+        </div>
+        <div class="copyright">
+          <p>© 2025 All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      // 取得表單元素
+      const loginForm = document.getElementById("loginForm");
+
+      // 表單提交處理
+      loginForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        // 取得輸入值
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        // 這裡處理登入邏輯
+        console.log("登入資訊:", { username, password });
+
+        // 簡單的驗證示範
+        if (username && password) {
+          alert("登入成功！");
+          // 可以導向其他頁面
+          // window.location.href = 'index.html';
+        }
+      });
+
+      // Line 登入按鈕
+      const lineBtn = document.querySelector(".btn-line");
+      lineBtn.addEventListener("click", () => {
+        console.log("使用 Line 登入");
+        alert("Line 登入功能開發中...");
+      });
+
+      // 忘記密碼
+      const forgotPassword = document.querySelector(".forgot-password");
+      forgotPassword.addEventListener("click", (e) => {
+        e.preventDefault();
+        alert("請聯繫客服重置密碼");
+      });
+    </script>
+  </body>
+</html>

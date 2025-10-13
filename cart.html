@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>購物車</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <style>
+    main {
+      background-color: #ccc;
+      padding: 64px;
+    }
+    /* 購物車頁面主體 */
+    .cart-page {
+      min-height: calc(100vh - 64px - 300px);
+      padding: 48px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .page-title {
+      font-size: 32px;
+      color: #333;
+      margin-bottom: 32px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    /* 空購物車樣式 */
+    .empty-cart {
+      background: white;
+      border-radius: 16px;
+      padding: 80px 40px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      animation: fadeIn 0.5s ease;
+    }
+
+    .empty-cart-icon {
+      margin-bottom: 24px;
+    }
+
+    .empty-cart-icon i {
+      font-size: 120px;
+      color: #ddd;
+    }
+
+    .empty-cart h2 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .empty-cart p {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 32px;
+    }
+
+    .btn-shop {
+      display: inline-block;
+      padding: 14px 40px;
+      background: #dc3545;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+    }
+
+    .btn-shop:hover {
+      background: #c82333;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(220, 53, 69, 0.4);
+    }
+
+    /* 有商品的購物車 */
+    .cart-content {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 32px;
+      animation: fadeIn 0.5s ease;
+    }
+
+    /* 購物車商品列表 */
+    .cart-items {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .cart-item {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: 100px 1fr auto auto auto auto;
+      gap: 20px;
+      align-items: center;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s ease;
+    }
+
+    .cart-item:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .item-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .item-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .item-details {
+      flex: 1;
+    }
+
+    .item-details h3 {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .item-description {
+      font-size: 14px;
+      color: #666;
+    }
+
+    .item-price {
+      font-size: 16px;
+      color: #666;
+      font-weight: 500;
+    }
+
+    /* 數量調整 */
+    .item-quantity {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #f5f5f5;
+      border-radius: 8px;
+      padding: 4px;
+    }
+
+    .qty-btn {
+      width: 32px;
+      height: 32px;
+      border: none;
+      background: white;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 18px;
+      color: #333;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .qty-btn:hover {
+      background: #1597fb;
+      color: white;
+    }
+
+    .item-quantity input {
+      width: 50px;
+      text-align: center;
+      border: none;
+      background: transparent;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .item-total {
+      font-size: 20px;
+      color: #1597fb;
+      font-weight: 700;
+      min-width: 120px;
+      text-align: right;
+    }
+
+    .item-remove {
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: #fee;
+      color: #dc3545;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: all 0.2s ease;
+    }
+
+    .item-remove:hover {
+      background: #dc3545;
+      color: white;
+    }
+
+    /* 訂單摘要 */
+    .cart-summary {
+      background: white;
+      border-radius: 12px;
+      padding: 32px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      height: fit-content;
+      position: sticky;
+      top: 20px;
+    }
+
+    .cart-summary h2 {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 24px;
+      font-weight: 700;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      font-size: 16px;
+      color: #666;
+    }
+
+    .summary-row.total {
+      font-size: 20px;
+      color: #333;
+      font-weight: 700;
+      margin-top: 16px;
+    }
+
+    .summary-row.total span:last-child {
+      color: #1597fb;
+    }
+
+    .summary-divider {
+      height: 1px;
+      background: #e5e5e5;
+      margin: 20px 0;
+    }
+
+    /* 前往結帳按鈕 */
+    .btn-checkout-empty {
+      display: inline-block;
+      padding: 14px 40px;
+      background: #1597fb;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(21, 151, 251, 0.3);
+    }
+
+    .btn-checkout-empty:hover {
+      background: #0d6ebd;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(21, 151, 251, 0.4);
+    }
+
+    .btn-continue {
+      display: block;
+      text-align: center;
+      margin-top: 16px;
+      color: #1597fb;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.2s ease;
+    }
+
+    .btn-continue:hover {
+      color: #0d6ebd;
+      text-decoration: underline;
+    }
+
+    /* 動畫 */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+  <body>
+    <div class="wrapper">
+      <header>
+        <a href="index.html">
+          <img src="img/logo.png" class="logo" height="50" alt="#" />
+        </a>
+        <nav>
+          <ul>
+            <li><a href="interactiveDemo.html">互動範例</a></li>
+            <li><a href="otherAnimations.html">其他動畫</a></li>
+            <li><a href="products.html">課程購買</a></li>
+            <li><a href="login.html">會員登入/註冊</a></li>
+            <li><a href="cart.html">購物車</a></li>
+          </ul>
+        </nav>
+      </header>
+      <!-- 購物車主體 -->
+      <main class="cart-page">
+        <div class="container">
+          <h1 class="page-title">購物車</h1>
+
+          <!-- 空購物車狀態 -->
+          <div id="emptyCart" class="empty-cart">
+            <div class="empty-cart-icon">
+              <i class="bi bi-cart-x"></i>
+            </div>
+            <h2>目前購物車沒有商品</h2>
+            <p>還沒有找到心儀的課程嗎？快去逛逛吧！</p>
+            <a href="products.html" class="btn-shop">回去逛逛</a>
+            <a href="checkout.html" class="btn-checkout-empty">前往結帳</a>
+          </div>
+
+          <!-- 有商品的購物車 -->
+          <div id="cartWithItems" class="cart-content" style="display: none">
+            <div class="cart-items">
+              <!-- 購物車商品項目 -->
+              <div class="cart-item">
+                <div class="item-image">
+                  <img src="./img/course-html.png" alt="HTML 完整開發課程" />
+                </div>
+                <div class="item-details">
+                  <h3>HTML 完整開發課程</h3>
+                  <p class="item-description">從基礎到進階,掌握基礎前端架構</p>
+                </div>
+                <div class="item-price">NT$ 2,999</div>
+                <div class="item-quantity">
+                  <button class="qty-btn minus">-</button>
+                  <input type="number" value="1" min="1" readonly />
+                  <button class="qty-btn plus">+</button>
+                </div>
+                <div class="item-total">NT$ 2,999</div>
+                <button class="item-remove">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
+
+              <div class="cart-item">
+                <div class="item-image">
+                  <img src="./img/course-css.png" alt="CSS 樣式處理" />
+                </div>
+                <div class="item-details">
+                  <h3>CSS 樣式處理</h3>
+                  <p class="item-description">CSS 美化外觀</p>
+                </div>
+                <div class="item-price">NT$ 1,999</div>
+                <div class="item-quantity">
+                  <button class="qty-btn minus">-</button>
+                  <input type="number" value="1" min="1" readonly />
+                  <button class="qty-btn plus">+</button>
+                </div>
+                <div class="item-total">NT$ 1,999</div>
+                <button class="item-remove">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- 購物車總計 -->
+            <div class="cart-summary">
+              <h2>訂單摘要</h2>
+              <div class="summary-row">
+                <span>小計</span>
+                <span id="subtotal">NT$ 4,998</span>
+              </div>
+              <div class="summary-row">
+                <span>運費</span>
+                <span>免運費</span>
+              </div>
+              <div class="summary-divider"></div>
+              <div class="summary-row total">
+                <span>總計</span>
+                <span id="total">NT$ 4,998</span>
+              </div>
+              <button class="btn-checkout">前往結帳</button>
+              <a href="products.html" class="btn-continue">繼續購物</a>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer>
+        <div class="logo-footer">
+          <img src="./img/logo-footer.png" alt="logo-footer" />
+        </div>
+        <div class="socials">
+          <ul>
+            <li>
+              <a href="#"> <i class="bi bi-envelope"></i>Email </a>
+            </li>
+            <li>
+              <a href="#"> <i class="bi bi-facebook"></i>Facebook </a>
+            </li>
+            <li>
+              <a href="#"> <i class="bi bi-instagram"></i>Instagram </a>
+            </li>
+          </ul>
+        </div>
+        <div class="copyright">
+          <p>© 2025 All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      // 初始化購物車
+      document.addEventListener("DOMContentLoaded", () => {
+        // 模擬購物車狀態，可以從 localStorage 讀取
+        const cartItems = []; // 空陣列表示空購物車
+
+        // 根據購物車狀態顯示不同內容
+        if (cartItems.length === 0) {
+          showEmptyCart();
+        }
+      });
+
+      // 顯示空購物車
+      function showEmptyCart() {
+        document.getElementById("emptyCart").style.display = "block";
+        document.getElementById("cartWithItems").style.display = "none";
+      }
+    </script>
+  </body>
+</html>

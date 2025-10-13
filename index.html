@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontend Explorer 開頭動畫</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <a href="index.html">
+          <img src="img/logo.png" class="logo" height="50" alt="#" />
+        </a>
+        <nav>
+          <ul>
+            <li><a href="interactiveDemo.html">互動範例</a></li>
+            <li><a href="otherAnimations.html">其他動畫</a></li>
+            <li><a href="products.html">課程購買</a></li>
+            <li>
+              <a href="cart.html"><i class="bi bi-cart-fill"></i></a>
+            </li>
+            <li><a href="login.html">會員登入/註冊</a></li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <!-- 開頭動畫區 -->
+        <div class="landingAnimation">
+          <h1>Frontend Explorer</h1>
+          <h2>Learn Frontend, Build Your Own Projects.</h2>
+          <h3>HTML</h3>
+          <h4>CSS</h4>
+          <h5>JavaScript</h5>
+          <div class="gradient-ball"></div>
+        </div>
+        <!-- 主內容分鏡 -->
+        <section class="pipe-section">
+          <div class="content-wrapper">
+            <div class="text-block">
+              <div class="text-item" data-text="html">
+                <h2>HTML-打造網頁的骨架</h2>
+                <p>
+                  是建立網頁的基礎語言，負責定義內容的結構，例如標題、段落、圖片與連結。就像房子的鋼骨，HTML
+                  決定了網頁內容的基本框架。
+                </p>
+              </div>
+
+              <div class="text-item" data-text="css">
+                <h2>CSS-讓網頁充滿色彩與風格</h2>
+                <p>
+                  用來控制網頁的外觀和佈局，例如字體、顏色、邊距與動畫效果。它就像是設計師的畫筆，讓網頁看起來更吸引人。
+                </p>
+              </div>
+
+              <div class="text-item" data-text="js">
+                <h2>JavaScript-讓網頁活起來</h2>
+                <p>
+                  是一種用來為網頁加入互動功能的腳本語言，能實現像是按鈕點擊、表單驗證、動態內容更新等效果。它是讓網頁從靜態轉為動態的關鍵工具。
+                </p>
+              </div>
+            </div>
+
+            <div class="pipe-bgi">
+              <div class="rolling-ball"></div>
+            </div>
+          </div>
+        </section>
+        <!-- 視差滾動區 -->
+        <section class="parallax">
+          <div class="parallax-container">
+            <!-- 背景圖層 -->
+            <div
+              class="parallax-bg"
+              style="background-image: url('./img/parallax.png')"
+            ></div>
+
+            <!-- 中間標題 -->
+            <div class="parallax-content"></div>
+          </div>
+        </section>
+        <!-- 熱門課程輪播區 -->
+        <section class="hot-courses">
+          <div class="wrapper">
+            <h2 class="section-title">熱門課程</h2>
+
+            <div class="swiper-container">
+              <!-- Swiper 包裹容器 -->
+              <div class="swiper">
+                <div class="swiper-wrapper">
+                  <!-- 課程卡片 1 -->
+                  <div class="swiper-slide">
+                    <div class="course-card">
+                      <div class="course-image">
+                        <img src="./img/course-html.png" alt="課程名稱 HTML" />
+                      </div>
+                      <div class="course-info">
+                        <h3>HTML 完整開發課程</h3>
+                        <p class="course-desc">從基礎到進階,掌握基礎前端架構</p>
+                        <div class="course-meta">
+                          <span class="price">NT$ 2,999</span>
+                          <span class="students">1,234 人</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 課程卡片 2 -->
+                  <div class="swiper-slide">
+                    <div class="course-card">
+                      <div class="course-image">
+                        <img src="./img/course-css.png" alt="課程名稱 CSS" />
+                      </div>
+                      <div class="course-info">
+                        <h3>CSS 樣式處理</h3>
+                        <p class="course-desc">CSS 美化外觀</p>
+                        <div class="course-meta">
+                          <span class="price">NT$ 1,999</span>
+                          <span class="students">2,456 人</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 課程卡片 3 -->
+                  <div class="swiper-slide">
+                    <div class="course-card">
+                      <div class="course-image">
+                        <img src="./img/course-js.png" alt="課程名稱 JS" />
+                      </div>
+                      <div class="course-info">
+                        <h3>JS 從零開始</h3>
+                        <p class="course-desc">JavaScript 從入門到精通</p>
+                        <div class="course-meta">
+                          <span class="price">NT$ 2,499</span>
+                          <span class="students">987 人</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 可以繼續新增更多課程卡片 -->
+                  <div class="swiper-slide">
+                    <div class="course-card">
+                      <div class="course-image">
+                        <img src="./img/course-figma.png" alt="課程名稱 4" />
+                      </div>
+                      <div class="course-info">
+                        <h3>UI/UX 設計實戰</h3>
+                        <p class="course-desc">Figma 從入門到精通</p>
+                        <div class="course-meta">
+                          <span class="price">NT$ 3,499</span>
+                          <span class="students">1,876 人</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 左右箭頭 -->
+              <div class="swiper-button-next">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M9 18L15 12L9 6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+              <div class="swiper-button-prev">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M15 18L9 12L15 6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <!-- Footer 區 -->
+      <footer>
+        <div class="logo-footer">
+          <img src="./img/logo-footer.png" alt="logo-footer" />
+        </div>
+        <div class="socials">
+          <ul>
+            <li>
+              <a href="#"> <i class="bi bi-envelope"></i>Email </a>
+            </li>
+            <li>
+              <a href="#"> <i class="bi bi-facebook"></i>Facebook </a>
+            </li>
+            <li>
+              <a href="#"> <i class="bi bi-instagram"></i>Instagram </a>
+            </li>
+          </ul>
+        </div>
+        <div class="copyright">
+          <p>© 2025 All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+
+    <!-- GSAP 核心庫 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- GSAP ScrollTrigger 插件 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- swiper輪播 -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./js/all.js"></script>
+  </body>
+</html>

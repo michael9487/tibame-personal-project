@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>簡易分頁範例</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <style>
+    main {
+      background-color: #ccc;
+      padding: 64px;
+    }
+    .btn {
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      margin: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: #333;
+      border: 2px solid #333;
+    }
+
+    .btn-outline:hover {
+      background-color: #333;
+      color: white;
+    }
+
+    .btn-success {
+      background-color: #28a745;
+      color: white;
+      border-radius: 8px;
+    }
+
+    .btn-success:hover {
+      background-color: #218838;
+    }
+
+    .btn-rounded {
+      background-color: #ffc107;
+      color: #212529;
+      border-radius: 50px;
+    }
+
+    .btn-rounded:hover {
+      background-color: #e0a800;
+    }
+
+    .btn-shadow {
+      background-color: #6f42c1;
+      color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-shadow:hover {
+      background-color: #5936a6;
+    }
+  </style>
+  <body>
+    <div class="wrapper">
+      <header>
+        <a href="index.html">
+          <img src="img/logo.png" class="logo" height="50" alt="#" />
+        </a>
+        <nav>
+          <ul>
+            <li><a href="interactiveDemo.html">互動範例</a></li>
+            <li><a href="otherAnimations.html">其他動畫</a></li>
+            <li><a href="products.html">課程購買</a></li>
+            <li><a href="login.html">會員登入/註冊</a></li>
+            <li><a href="cart.html">購物車</a></li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <section class="section-html">
+          <!-- 1. h1：標題 -->
+          <h1>這是一個主標題（h1）</h1>
+
+          <!-- 2. p：段落 -->
+          <p>這是一段文字，使用 <code>&lt;p&gt;</code> 標籤表示段落內容。</p>
+
+          <!-- 3. a：超連結 -->
+          <a href="https://www.google.com" target="_blank"
+            >這是一個連結，會打開 Google</a
+          >
+
+          <!-- 4. img：圖片 -->
+          <p>以下是一張圖片（使用 <code>&lt;img&gt;</code>）：</p>
+          <img src="./img/interactive-img.png" alt="示意圖" />
+
+          <!-- 5. ul + li：無序清單 -->
+          <p>
+            這是一個清單（使用 <code>&lt;ul&gt;</code> 與
+            <code>&lt;li&gt;</code>）：
+          </p>
+          <ul>
+            <li>項目一</li>
+            <li>項目二</li>
+            <li>項目三</li>
+          </ul>
+        </section>
+
+        <section class="section-css">
+          <h2>CSS 按鈕樣式展示</h2>
+
+          <button class="btn btn-primary">基本按鈕</button>
+          <button class="btn btn-outline">變色的按鈕</button>
+          <button class="btn btn-success">邊角弧度按鈕</button>
+          <button class="btn btn-rounded">圓角按鈕</button>
+          <button class="btn btn-shadow">有陰影的按鈕</button>
+        </section>
+
+        <section class="section-js">
+          <h2>JavaScript 互動範例</h2>
+          <button onclick="showMessage()">點我一下</button>
+        </section>
+      </main>
+      <footer>
+        <div class="logo-footer">
+          <img src="./img/logo-footer.png" alt="logo-footer" />
+        </div>
+        <div class="socials">
+          <ul>
+            <li>
+              <a href="#"> <i class="bi bi-envelope"></i>Email </a>
+            </li>
+            <li>
+              <a href="#"> <i class="bi bi-facebook"></i>Facebook </a>
+            </li>
+            <li>
+              <a href="#"> <i class="bi bi-instagram"></i>Instagram </a>
+            </li>
+          </ul>
+        </div>
+        <div class="copyright">
+          <p>© 2025 All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      function showMessage() {
+        alert("你剛剛點了按鈕！");
+      }
+    </script>
+  </body>
+</html>

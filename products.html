@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>線上課程購買</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <style>
+    main {
+      background-color: #ccc;
+      padding: 64px;
+    }
+
+    h2 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #1c1d1f;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      font-size: 19px;
+      color: #6a6f73;
+      margin-bottom: 24px;
+    }
+
+    /* 標籤導航 */
+    .tabs {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 32px;
+      border-bottom: 1px solid #d1d7dc;
+      overflow-x: auto;
+    }
+
+    .tab {
+      padding: 12px 0;
+      font-size: 16px;
+      color: #6a6f73;
+      cursor: pointer;
+      border: none;
+      background: none;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .tab:hover {
+      color: #1c1d1f;
+    }
+
+    .tab.active {
+      color: #1c1d1f;
+      font-weight: 700;
+      border-bottom-color: #1c1d1f;
+    }
+
+    /* 課程卡片網格 */
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .course-card {
+      background: white;
+      border: 1px solid #d1d7dc;
+      border-radius: 4px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .course-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .course-image {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .course-content {
+      padding: 16px;
+    }
+
+    .course-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1c1d1f;
+      margin-bottom: 8px;
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .course-author {
+      font-size: 13px;
+      color: #6a6f73;
+      margin-bottom: 8px;
+    }
+
+    .course-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .rating {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #b4690e;
+    }
+
+    .rating-star {
+      color: #f69c08;
+    }
+
+    .rating-count {
+      font-size: 13px;
+      color: #6a6f73;
+      font-weight: 400;
+    }
+
+    .course-badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: #eceb98;
+      color: #3d3c0a;
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 2px;
+    }
+
+    .course-price {
+      font-size: 19px;
+      font-weight: 700;
+      color: #1c1d1f;
+    }
+
+    /* 響應式設計 */
+    @media (max-width: 768px) {
+      h2 {
+        font-size: 24px;
+      }
+
+      .subtitle {
+        font-size: 16px;
+      }
+
+      .courses-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .courses-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <body>
+    <div class="wrapper">
+      <header>
+        <a href="index.html">
+          <img src="img/logo.png" class="logo" height="50" alt="#" />
+        </a>
+        <nav>
+          <ul>
+            <li><a href="interactiveDemo.html">互動範例</a></li>
+            <li><a href="otherAnimations.html">其他動畫</a></li>
+            <li><a href="products.html">課程購買</a></li>
+            <li><a href="login.html">會員登入/註冊</a></li>
+            <li><a href="cart.html">購物車</a></li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <div class="container">
+          <h2>增進職涯的其他選擇</h2>
+          <p class="subtitle">
+            從基礎到開發, Code Your Life 支援您的專業發展。
+          </p>
+
+          <!-- 標籤導航 -->
+          <div class="tabs">
+            <button class="tab" data-category="html">HTML</button>
+            <button class="tab" data-category="css">CSS</button>
+            <button class="tab" data-category="javascript">JavaScript</button>
+            <button class="tab active" data-category="vue">Vue</button>
+          </div>
+
+          <!-- 課程網格 -->
+          <div class="courses-grid" id="coursesGrid">
+            <!-- 課程卡片將由 JavaScript 動態生成 -->
+          </div>
+        </div>
+      </main>
+      <footer>
+        <div class="logo-footer">
+          <img src="./img/logo-footer.png" alt="logo-footer" />
+        </div>
+        <div class="socials">
+          <ul>
+            <li>
+              <a href="#"> <i class="bi bi-envelope"></i>Email </a>
+            </li>
+            <li>
+              <a href="#"> <i class="bi bi-facebook"></i>Facebook </a>
+            </li>
+            <li>
+              <a href="#"> <i class="bi bi-instagram"></i>Instagram </a>
+            </li>
+          </ul>
+        </div>
+        <div class="copyright">
+          <p>© 2025 All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+    <script>
+      // 課程資料
+      const coursesData = {
+        html: [
+          {
+            title: "HTML5 完整開發指南:從基礎到進階",
+            author: "張老師",
+            rating: 4.6,
+            ratingCount: 1240,
+            price: 390,
+            badge: "暢銷課程",
+            gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+          },
+          {
+            title: "HTML 與網頁設計入門實戰",
+            author: "李老師",
+            rating: 4.5,
+            ratingCount: 890,
+            price: 350,
+            badge: null,
+            gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+          },
+          {
+            title: "響應式網頁設計:HTML5 實作技巧",
+            author: "王老師",
+            rating: 4.7,
+            ratingCount: 1567,
+            price: 420,
+            badge: "暢銷課程",
+            gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)",
+          },
+          {
+            title: "HTML 語意化標籤與 SEO 優化",
+            author: "陳老師",
+            rating: 4.4,
+            ratingCount: 678,
+            price: 380,
+            badge: null,
+            gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
+          },
+        ],
+        css: [
+          {
+            title: "CSS3 動畫與特效完全攻略",
+            author: "林老師",
+            rating: 4.8,
+            ratingCount: 2134,
+            price: 450,
+            badge: "暢銷課程",
+            gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+          },
+          {
+            title: "Flexbox 與 Grid 現代佈局技術",
+            author: "黃老師",
+            rating: 4.7,
+            ratingCount: 1823,
+            price: 420,
+            badge: "暢銷課程",
+            gradient: "linear-gradient(135deg, #fccb90 0%, #d57eeb 100%)",
+          },
+          {
+            title: "CSS 預處理器:Sass 與 SCSS 實戰",
+            author: "吳老師",
+            rating: 4.5,
+            ratingCount: 956,
+            price: 400,
+            badge: null,
+            gradient: "linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)",
+          },
+          {
+            title: "CSS 架構與設計系統開發",
+            author: "劉老師",
+            rating: 4.6,
+            ratingCount: 1234,
+            price: 430,
+            badge: null,
+            gradient: "linear-gradient(135deg, #f6d365 0%, #fda085 100%)",
+          },
+        ],
+        javascript: [
+          {
+            title: "JavaScript 完整開發課程 2025",
+            author: "陳老師",
+            rating: 4.9,
+            ratingCount: 3456,
+            price: 480,
+            badge: "暢銷課程",
+            gradient: "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)",
+          },
+          {
+            title: "ES6+ 現代 JavaScript 開發實戰",
+            author: "周老師",
+            rating: 4.7,
+            ratingCount: 2345,
+            price: 450,
+            badge: "暢銷課程",
+            gradient: "linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)",
+          },
+          {
+            title: "JavaScript 非同步程式設計與 API",
+            author: "鄭老師",
+            rating: 4.6,
+            ratingCount: 1678,
+            price: 420,
+            badge: null,
+            gradient: "linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%)",
+          },
+          {
+            title: "JavaScript 演算法與資料結構",
+            author: "張老師",
+            rating: 4.8,
+            ratingCount: 1987,
+            price: 460,
+            badge: "暢銷課程",
+            gradient: "linear-gradient(135deg, #d299c2 0%, #fef9d7 100%)",
+          },
+        ],
+        vue: [
+          {
+            title: "Vue 3 完整開發指南:從零到一",
+            author: "王老師",
+            rating: 4.8,
+            ratingCount: 2876,
+            price: 490,
+            badge: "暢銷課程",
+            gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
+          },
+          {
+            title: "Vue 3 + TypeScript 企業級開發",
+            author: "李老師",
+            rating: 4.7,
+            ratingCount: 1945,
+            price: 470,
+            badge: "暢銷課程",
+            gradient:
+              "linear-gradient(135deg, #fa8bff 0%, #2bd2ff 90%, #2bff88 100%)",
+          },
+          {
+            title: "Vuex 與 Pinia 狀態管理實戰",
+            author: "林老師",
+            rating: 4.6,
+            ratingCount: 1234,
+            price: 430,
+            badge: null,
+            gradient: "linear-gradient(135deg, #fddb92 0%, #d1fdff 100%)",
+          },
+          {
+            title: "Vue Router 與單頁應用開發",
+            author: "黃老師",
+            rating: 4.5,
+            ratingCount: 987,
+            price: 410,
+            badge: null,
+            gradient: "linear-gradient(135deg, #9890e3 0%, #b1f4cf 100%)",
+          },
+        ],
+      };
+
+      // 渲染課程卡片
+      function renderCourses(category) {
+        const coursesGrid = document.getElementById("coursesGrid");
+        const courses = coursesData[category];
+
+        coursesGrid.innerHTML = courses
+          .map(
+            (course) => `
+              <div class="course-card">
+                  <div class="course-image" style="background: ${
+                    course.gradient
+                  };"></div>
+                  <div class="course-content">
+                      <h3 class="course-title">${course.title}</h3>
+                      <p class="course-author">${course.author}</p>
+                      <div class="course-meta">
+                          <div class="rating">
+                              <span class="rating-star">★</span>
+                              <span>${course.rating}</span>
+                          </div>
+                          <span class="rating-count">(${course.ratingCount.toLocaleString()})</span>
+                      </div>
+                      ${
+                        course.badge
+                          ? `<span class="course-badge">${course.badge}</span>`
+                          : ""
+                      }
+                      <div class="course-price">$${course.price}</div>
+                  </div>
+              </div>
+          `
+          )
+          .join("");
+      }
+
+      // 標籤切換功能
+      const tabs = document.querySelectorAll(".tab");
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", function () {
+          // 移除所有 active 狀態
+          tabs.forEach((t) => t.classList.remove("active"));
+          // 添加當前 active 狀態
+          this.classList.add("active");
+          // 渲染對應課程
+          const category = this.dataset.category;
+          renderCourses(category);
+        });
+      });
+
+      // 初始化載入 Vue 課程
+      renderCourses("vue");
+    </script>
+  </body>
+</html>
