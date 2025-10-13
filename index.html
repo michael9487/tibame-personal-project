@@ -4,6 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Frontend Explorer 開頭動畫</title>
+    <!-- ⭐ 防止 FOUC 的 Critical CSS - 必須放在最前面 -->
+    <style>
+      /* 防止 FOUC - 預先隱藏動畫元素 */
+      .landingAnimation,
+      header,
+      header nav li,
+      .rolling-ball,
+      .text-item {
+        visibility: hidden;
+      }
+    </style>
     <link
       href="https://fonts.googleapis.com/css2?family=Kanit:wght@700&display=swap"
       rel="stylesheet"
