@@ -172,6 +172,25 @@
       font-size: 14px;
     }
 
+    /* google 登入按鈕 */
+    .btn-google {
+      width: 100%;
+      padding: 14px;
+      background: white;
+      color: #1f1f1f;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      margin-bottom: 16px;
+      outline: #747775 solid 1px;
+    }
     /* Line 登入按鈕 */
     .btn-line {
       width: 100%;
@@ -230,7 +249,7 @@
                 <input
                   type="text"
                   id="username"
-                  placeholder="身分證字號 / 護照號碼"
+                  placeholder="帳號/信箱 "
                   required
                 />
               </div>
@@ -258,6 +277,10 @@
             <div class="divider">
               <span>或</span>
             </div>
+            <button class="btn-google">
+              <i class="bi bi-google"></i>
+              使用 Google信箱 登入
+            </button>
 
             <button class="btn-line">
               <i class="bi bi-line"></i>
