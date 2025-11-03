@@ -292,6 +292,12 @@
       color: #0d6ebd;
       text-decoration: underline;
     }
+    .content-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: block;
+    }
 
     /* 動畫 */
     @keyframes fadeIn {
@@ -306,25 +312,93 @@
     }
   </style>
   <body>
+    <!-- 導覽列 -->
+    <header class="site-header" role="banner">
+      <div class="container">
+        <!-- 左：LOGO + 桌機版主選單 -->
+        <div class="nav-left">
+          <a class="brand" href="index.html" aria-label="TibaMe-like Home">
+            <img class="brand-badge" src="./img/logo.svg" alt="LOGO" />
+          </a>
+
+          <!-- 桌機版主選單 -->
+          <nav class="nav-desktop" aria-label="主導覽">
+            <ul>
+              <li><a href="products.html">看看課程</a></li>
+              <li><a href="interactiveDemo.html">網頁組成</a></li>
+              <li><a href="#">最新活動</a></li>
+              <li><a href="#">企業服務</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- 右：搜尋 / 購物車 / 登入 / 註冊（桌機顯示） -->
+        <div class="nav-right nav-desktop">
+          <label class="search" aria-label="站內搜尋">
+            <svg
+              class="icon"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                d="M10.5 3a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15Zm0 2a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11Zm7.78 12.22 3 3a1 1 0 1 1-1.42 1.42l-3-3a1 1 0 0 1 1.42-1.42Z"
+              />
+            </svg>
+            <input
+              type="search"
+              placeholder="搜尋課程或活動..."
+              inputmode="search"
+            />
+          </label>
+          <a href="cart.html" aria-label="購物車"
+            ><i class="bi bi-cart-fill"></i
+          ></a>
+          <a class="link auth-login" href="login.html">登入</a>
+          <a class="btn" href="regist.html">免費註冊</a>
+        </div>
+
+        <!-- 漢堡按鈕（手機/平板顯示） -->
+        <button
+          class="hamburger"
+          aria-label="開啟選單"
+          aria-controls="mobileNav"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <!-- 手機抽屜選單 -->
+      <div id="mobileNav" class="mobile-nav" aria-hidden="true">
+        <div class="mobile-inner">
+          <form class="mobile-search" role="search">
+            <input type="search" placeholder="搜尋課程或活動..." />
+            <button type="submit" aria-label="搜尋">
+              <i class="bi bi-search"></i>
+            </button>
+          </form>
+
+          <nav class="mobile-menu" aria-label="行動選單">
+            <ul>
+              <li><a href="products.html">看看課程</a></li>
+              <li><a href="interactiveDemo.html">網頁組成</a></li>
+              <li><a href="#">最新活動</a></li>
+              <li><a href="#">企業服務</a></li>
+            </ul>
+          </nav>
+
+          <div class="mobile-actions">
+            <a class="link" href="login.html">登入</a>
+            <a class="btn" href="regist.html">免費註冊</a>
+          </div>
+        </div>
+      </div>
+    </header>
     <div class="wrapper">
-      <header>
-        <a href="index.html">
-          <img src="./img/logo.png" class="logo" height="50" alt="#" />
-        </a>
-        <nav>
-          <ul>
-            <li><a href="interactiveDemo.html">互動範例</a></li>
-            <li><a href="otherAnimations.html">其他動畫</a></li>
-            <li><a href="products.html">課程購買</a></li>
-            <li>
-              <a href="cart.html"><i class="bi bi-cart-fill"></i></a>
-            </li>
-            <li><a href="login.html">會員登入/註冊</a></li>
-          </ul>
-      </header>
       <!-- 購物車主體 -->
       <main class="cart-page">
-        <div class="container">
+        <div class="content-container">
           <h1 class="page-title">購物車</h1>
 
           <!-- 空購物車狀態 -->
@@ -337,96 +411,72 @@
             <a href="products.html" class="btn-shop">回去逛逛</a>
             <a href="checkout.html" class="btn-checkout-empty">前往結帳</a>
           </div>
-
-          <!-- 有商品的購物車 -->
-          <!-- <div id="cartWithItems" class="cart-content" style="display: none">
-            <div class="cart-items"> -->
-              <!-- 購物車商品項目 -->
-              <!-- <div class="cart-item">
-                <div class="item-image">
-                  <img src="./img/course-html.png" alt="HTML 完整開發課程" />
-                </div>
-                <div class="item-details">
-                  <h3>HTML 完整開發課程</h3>
-                  <p class="item-description">從基礎到進階,掌握基礎前端架構</p>
-                </div>
-                <div class="item-price">NT$ 2,999</div>
-                <div class="item-quantity">
-                  <button class="qty-btn minus">-</button>
-                  <input type="number" value="1" min="1" readonly />
-                  <button class="qty-btn plus">+</button>
-                </div>
-                <div class="item-total">NT$ 2,999</div>
-                <button class="item-remove">
-                  <i class="bi bi-trash"></i>
-                </button>
-              </div>
-
-              <div class="cart-item">
-                <div class="item-image">
-                  <img src="./img/course-css.png" alt="CSS 樣式處理" />
-                </div>
-                <div class="item-details">
-                  <h3>CSS 樣式處理</h3>
-                  <p class="item-description">CSS 美化外觀</p>
-                </div>
-                <div class="item-price">NT$ 1,999</div>
-                <div class="item-quantity">
-                  <button class="qty-btn minus">-</button>
-                  <input type="number" value="1" min="1" readonly />
-                  <button class="qty-btn plus">+</button>
-                </div>
-                <div class="item-total">NT$ 1,999</div>
-                <button class="item-remove">
-                  <i class="bi bi-trash"></i>
-                </button>
-              </div>
-            </div> -->
-
-            <!-- 購物車總計 -->
-            <!-- <div class="cart-summary">
-              <h2>訂單摘要</h2>
-              <div class="summary-row">
-                <span>小計</span>
-                <span id="subtotal">NT$ 4,998</span>
-              </div>
-              <div class="summary-row">
-                <span>運費</span>
-                <span>免運費</span>
-              </div>
-              <div class="summary-divider"></div>
-              <div class="summary-row total">
-                <span>總計</span>
-                <span id="total">NT$ 4,998</span>
-              </div>
-              <button class="btn-checkout">前往結帳</button>
-              <a href="products.html" class="btn-continue">繼續購物</a>
-            </div> -->
-          <!-- </div> -->
         </div>
       </main>
-      <footer>
-        <div class="logo-footer">
-          <img src="./img/logo-footer.png" alt="logo-footer" />
+      <!-- Footer 區 -->
+      <footer class="site-footer">
+        <div class="footer-container">
+          <!-- ✅ 最左邊 LOGO 區 -->
+          <div class="footer-logo">
+            <img src="./img/logo_black.svg" alt="TibaMe Logo" />
+            <p>學習、成長、實現職涯目標</p>
+          </div>
+
+          <!-- 課程 -->
+          <div class="footer-col">
+            <h4>課程</h4>
+            <ul>
+              <li><a href="products.html">影音課程</a></li>
+              <li><a href="products.html">直播課程</a></li>
+              <li><a href="products.html">專業學程</a></li>
+            </ul>
+          </div>
+
+          <!-- 服務 -->
+          <div class="footer-col">
+            <h4>服務</h4>
+            <ul>
+              <li><a href="login.html">會員服務</a></li>
+              <li><a href="login.html">企業服務</a></li>
+            </ul>
+          </div>
+
+          <!-- 關於 -->
+          <div class="footer-col">
+            <h4>About</h4>
+            <ul>
+              <li><a href="#">關於我們</a></li>
+            </ul>
+          </div>
+
+          <!-- 社群與 APP -->
+          <div class="footer-col social-col">
+            <h4>關注我們</h4>
+            <div class="social-icons">
+              <a href="#"><i class="bi bi-facebook"></i></a>
+              <a href="#"><i class="bi bi-instagram"></i></a>
+              <a href="#"><i class="bi bi-line"></i></a>
+              <a href="#"><i class="bi bi-youtube"></i></a>
+            </div>
+          </div>
         </div>
-        <div class="socials">
-          <ul>
-            <li>
-              <a href="#"> <i class="bi bi-envelope"></i>Email </a>
-            </li>
-            <li>
-              <a href="#"> <i class="bi bi-facebook"></i>Facebook </a>
-            </li>
-            <li>
-              <a href="#"> <i class="bi bi-instagram"></i>Instagram </a>
-            </li>
-          </ul>
-        </div>
-        <div class="copyright">
-          <p>© 2025 All rights reserved.</p>
+
+        <!-- 下方版權列 -->
+        <div class="footer-bottom">
+          <p>© 2025 TibaMe Online Learning. All rights reserved.</p>
         </div>
       </footer>
     </div>
-
+    <script src="./js/all.js"></script>
+    <script>
+      const btn = document.querySelector(".hamburger");
+      const drawer = document.getElementById("mobileNav");
+      btn?.addEventListener("click", () => {
+        const open = drawer.classList.toggle("open");
+        btn.classList.toggle("is-open", open);
+        btn.setAttribute("aria-expanded", String(open));
+        drawer.setAttribute("aria-hidden", String(!open));
+      });
+    </script>
   </body>
 </html>

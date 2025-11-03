@@ -14,6 +14,9 @@
       .text-item {
         visibility: hidden;
       }
+      .parallax-content a{
+        text-decoration: none;
+      }
     </style>
     <link
       href="https://fonts.googleapis.com/css2?family=Kanit:wght@700&display=swap"
@@ -28,214 +31,296 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
     />
+    <link rel="stylesheet" href="./css/reset.css">
   </head>
   <body>
+    <!-- 導覽列 -->
+    <header class="site-header" role="banner">
+      <div class="container">
+        <!-- 左：LOGO + 桌機版主選單 -->
+        <div class="nav-left">
+          <a class="brand" href="index.html" aria-label="TibaMe-like Home">
+            <img class="brand-badge" src="./img/logo.svg" alt="LOGO" />
+          </a>
+    
+          <!-- 桌機版主選單 -->
+          <nav class="nav-desktop" aria-label="主導覽">
+            <ul>
+              <li><a href="products.html">看看課程</a></li>
+              <li><a href="interactiveDemo.html">網頁組成</a></li>
+              <li><a href="#">最新活動</a></li>
+              <li><a href="#">企業服務</a></li>
+            </ul>
+          </nav>
+        </div>
+    
+        <!-- 右：搜尋 / 購物車 / 登入 / 註冊（桌機顯示） -->
+        <div class="nav-right nav-desktop">
+          <label class="search" aria-label="站內搜尋">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M10.5 3a7.5 7.5 0 1 1 0 15 7.5 7.5 0 0 1 0-15Zm0 2a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11Zm7.78 12.22 3 3a1 1 0 1 1-1.42 1.42l-3-3a1 1 0 0 1 1.42-1.42Z"/>
+            </svg>
+            <input type="search" placeholder="搜尋課程或活動..." inputmode="search" />
+          </label>
+          <a href="cart.html" aria-label="購物車"><i class="bi bi-cart-fill"></i></a>
+          <a class="link auth-login" href="login.html">登入</a>
+          <a class="btn" href="regist.html">免費註冊</a>
+        </div>
+    
+        <!-- 漢堡按鈕（手機/平板顯示） -->
+        <button class="hamburger" aria-label="開啟選單" aria-controls="mobileNav" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    
+      <!-- 手機抽屜選單 -->
+      <div id="mobileNav" class="mobile-nav" aria-hidden="true">
+        <div class="mobile-inner">
+          <form class="mobile-search" role="search">
+            <input type="search" placeholder="搜尋課程或活動..." />
+            <button type="submit" aria-label="搜尋"><i class="bi bi-search"></i></button>
+          </form>
+    
+          <nav class="mobile-menu" aria-label="行動選單">
+            <ul>
+              <li><a href="products.html">看看課程</a></li>
+              <li><a href="interactiveDemo.html">網頁組成</a></li>
+              <li><a href="#">最新活動</a></li>
+              <li><a href="#">企業服務</a></li>
+            </ul>
+          </nav>
+    
+          <div class="mobile-actions">
+            <a class="link" href="login.html">登入</a>
+            <a class="btn" href="regist.html">免費註冊</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    
     <div class="wrapper">
-      <header>
-        <a href="index.html">
-          <img src="./img/logo.png" class="logo" height="50" alt="#" />
-        </a>
-        <nav>
-          <ul>
-            <li><a href="interactiveDemo.html">互動範例</a></li>
-            <li><a href="otherAnimations.html">其他動畫</a></li>
-            <li><a href="products.html">課程購買</a></li>
-            <li>
-              <a href="cart.html"><i class="bi bi-cart-fill"></i></a>
-            </li>
-            <li><a href="login.html">會員登入/註冊</a></li>
-          </ul>
-        </nav>
-      </header>
       <main>
         <!-- 開頭動畫區 -->
         <div class="landingAnimation">
           <h1>Frontend Explorer</h1>
-          <h2>Learn Frontend, Build Your Own Projects.</h2>
-          <h3>HTML</h3>
-          <h4>CSS</h4>
-          <h5>JavaScript</h5>
-          <div class="gradient-ball"></div>
-        </div>
-        <!-- 主內容分鏡 -->
-        <section class="pipe-section">
-          <div class="content-wrapper">
-            <div class="text-block">
-              <div class="text-item" data-text="html">
-                <h2>HTML-打造網頁的骨架</h2>
-                <p>
-                  是建立網頁的基礎語言，負責定義內容的結構，例如標題、段落、圖片與連結。就像房子的鋼骨，HTML
-                  決定了網頁內容的基本框架。
-                </p>
-              </div>
-
-              <div class="text-item" data-text="css">
-                <h2>CSS-讓網頁充滿色彩與風格</h2>
-                <p>
-                  用來控制網頁的外觀和佈局，例如字體、顏色、邊距與動畫效果。它就像是設計師的畫筆，讓網頁看起來更吸引人。
-                </p>
-              </div>
-
-              <div class="text-item" data-text="js">
-                <h2>JavaScript-讓網頁活起來</h2>
-                <p>
-                  是一種用來為網頁加入互動功能的腳本語言，能實現像是按鈕點擊、表單驗證、動態內容更新等效果。它是讓網頁從靜態轉為動態的關鍵工具。
-                </p>
-              </div>
+          <h2>Learn Frontend, Build Your Own Projects.</h2>          
+          <div class="tech-track">
+            <div class="tech-row" aria-hidden="true">
+              <span class="t1">HTML</span>
+              <span class="t2">CSS</span>
+              <span class="t3">JavaScript</span>
             </div>
-
-            <div class="pipe-bgi">
-              <div class="rolling-ball"></div>
-            </div>
+            <div class="gradient-ball" aria-hidden="true"></div>
           </div>
+        </div>
+        <!-- 熱門課程輪播區 -->
+        <section class="hot-courses">
+                            <div class="wrapper">
+                              <h2 class="section-title">熱門課程</h2>
+                  
+                              <div class="swiper-container">
+                                <!-- Swiper 包裹容器 -->
+                                <div class="swiper">
+                                  <div class="swiper-wrapper">
+                                    <!-- 課程卡片 1 -->
+                                    <div class="swiper-slide">
+                                      <div class="course-card">
+                                        <div class="course-image">
+                                          <img src="./img/course-html.png" alt="課程名稱 HTML" />
+                                        </div>
+                                        <div class="course-info">
+                                          <h3>HTML 完整開發課程</h3>
+                                          <p class="course-desc">從基礎到進階,掌握基礎前端架構</p>
+                                          <div class="course-meta">
+                                            <span class="price">NT$ 2,999</span>
+                                            <span class="students">1,234 人</span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                  
+                                    <!-- 課程卡片 2 -->
+                                    <div class="swiper-slide">
+                                      <div class="course-card">
+                                        <div class="course-image">
+                                          <img src="./img/course-css.png" alt="課程名稱 CSS" />
+                                        </div>
+                                        <div class="course-info">
+                                          <h3>CSS 樣式處理</h3>
+                                          <p class="course-desc">CSS 美化外觀</p>
+                                          <div class="course-meta">
+                                            <span class="price">NT$ 1,999</span>
+                                            <span class="students">2,456 人</span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                  
+                                    <!-- 課程卡片 3 -->
+                                    <div class="swiper-slide">
+                                      <div class="course-card">
+                                        <div class="course-image">
+                                          <img src="./img/course-js.png" alt="課程名稱 JS" />
+                                        </div>
+                                        <div class="course-info">
+                                          <h3>JS 從零開始</h3>
+                                          <p class="course-desc">JavaScript 從入門到精通</p>
+                                          <div class="course-meta">
+                                            <span class="price">NT$ 2,499</span>
+                                            <span class="students">987 人</span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                  
+                                    <!-- 可以繼續新增更多課程卡片 -->
+                                    <div class="swiper-slide">
+                                      <div class="course-card">
+                                        <div class="course-image">
+                                          <img src="./img/course-figma.png" alt="課程名稱 4" />
+                                        </div>
+                                        <div class="course-info">
+                                          <h3>UI/UX 設計實戰</h3>
+                                          <p class="course-desc">Figma 從入門到精通</p>
+                                          <div class="course-meta">
+                                            <span class="price">NT$ 3,499</span>
+                                            <span class="students">1,876 人</span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                  
+                                <!-- 左右箭頭 -->
+                                <div class="swiper-button-next">
+                                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path
+                                      d="M9 18L15 12L9 6"
+                                      stroke="currentColor"
+                                      stroke-width="2"
+                                      stroke-linecap="round"
+                                    />
+                                  </svg>
+                                </div>
+                                <div class="swiper-button-prev">
+                                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path
+                                      d="M15 18L9 12L15 6"
+                                      stroke="currentColor"
+                                      stroke-width="2"
+                                      stroke-linecap="round"
+                                    />
+                                  </svg>
+                                </div>
+                              </div>
+                            </div>
+        </section>
+        <!-- 無限符號圖文區 -->
+        <section class="two-cycle-section">
+          <div class="container">
+            <div class="left-section">
+                <p class="subtitle">我們秉持著</p>
+                <h1 class="title">讓學習與就業形成正向循環</h1>
+            </div>
+    
+            <div class="right-section">
+                <div class="infinity-container">
+                    <!-- 使用生成的橫8圖片 -->
+                    <img src="./img/two-cycle.png" 
+                         alt="無限符號" 
+                         style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+            </div>
         </section>
         <!-- 視差滾動區 -->
         <section class="parallax">
-          <div class="parallax-container">
-            <!-- 背景圖層 -->
-            <div
-              class="parallax-bg"
-              style="background-image: url('./img/parallax.png')"
-            ></div>
+    <div class="parallax-container">
+      <!-- 背景圖層 -->
+      <div class="parallax-bg"></div>
 
-            <!-- 中間標題 -->
-            <div class="parallax-content"></div>
-          </div>
-        </section>
-        <!-- 熱門課程輪播區 -->
-        <section class="hot-courses">
-          <div class="wrapper">
-            <h2 class="section-title">熱門課程</h2>
-
-            <div class="swiper-container">
-              <!-- Swiper 包裹容器 -->
-              <div class="swiper">
-                <div class="swiper-wrapper">
-                  <!-- 課程卡片 1 -->
-                  <div class="swiper-slide">
-                    <div class="course-card">
-                      <div class="course-image">
-                        <img src="./img/course-html.png" alt="課程名稱 HTML" />
-                      </div>
-                      <div class="course-info">
-                        <h3>HTML 完整開發課程</h3>
-                        <p class="course-desc">從基礎到進階,掌握基礎前端架構</p>
-                        <div class="course-meta">
-                          <span class="price">NT$ 2,999</span>
-                          <span class="students">1,234 人</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- 課程卡片 2 -->
-                  <div class="swiper-slide">
-                    <div class="course-card">
-                      <div class="course-image">
-                        <img src="./img/course-css.png" alt="課程名稱 CSS" />
-                      </div>
-                      <div class="course-info">
-                        <h3>CSS 樣式處理</h3>
-                        <p class="course-desc">CSS 美化外觀</p>
-                        <div class="course-meta">
-                          <span class="price">NT$ 1,999</span>
-                          <span class="students">2,456 人</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- 課程卡片 3 -->
-                  <div class="swiper-slide">
-                    <div class="course-card">
-                      <div class="course-image">
-                        <img src="./img/course-js.png" alt="課程名稱 JS" />
-                      </div>
-                      <div class="course-info">
-                        <h3>JS 從零開始</h3>
-                        <p class="course-desc">JavaScript 從入門到精通</p>
-                        <div class="course-meta">
-                          <span class="price">NT$ 2,499</span>
-                          <span class="students">987 人</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- 可以繼續新增更多課程卡片 -->
-                  <div class="swiper-slide">
-                    <div class="course-card">
-                      <div class="course-image">
-                        <img src="./img/course-figma.png" alt="課程名稱 4" />
-                      </div>
-                      <div class="course-info">
-                        <h3>UI/UX 設計實戰</h3>
-                        <p class="course-desc">Figma 從入門到精通</p>
-                        <div class="course-meta">
-                          <span class="price">NT$ 3,499</span>
-                          <span class="students">1,876 人</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 左右箭頭 -->
-              <div class="swiper-button-next">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M9 18L15 12L9 6"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-                </svg>
-              </div>
-              <div class="swiper-button-prev">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path
-                    d="M15 18L9 12L15 6"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-                </svg>
-              </div>
-            </div>
-          </div>
+      <!-- 中間標題和按鈕 -->
+      <div class="parallax-content">
+        <h2>從入門到進階，跟路線圖一步到位</h2>
+        <button class="center-button">
+        <a href="products.html">開始學習</a>  
+        </button>
+      </div>
+    </div>
         </section>
       </main>
       <!-- Footer 區 -->
-      <footer>
-        <div class="logo-footer">
-          <img src="./img/logo-footer.png" alt="logo-footer" />
+      <footer class="site-footer">
+        <div class="footer-container">
+          <!-- ✅ 最左邊 LOGO 區 -->
+          <div class="footer-logo">
+            <img src="./img/logo_black.svg" alt="TibaMe Logo" />
+            <p>學習、成長、實現職涯目標</p>
+          </div>
+      
+          <!-- 課程 -->
+          <div class="footer-col">
+            <h4>課程</h4>
+            <ul>
+              <li><a href="products.html">影音課程</a></li>
+              <li><a href="products.html">直播課程</a></li>
+              <li><a href="products.html">專業學程</a></li>
+            </ul>
+          </div>
+      
+          <!-- 服務 -->
+          <div class="footer-col">
+            <h4>服務</h4>
+            <ul>
+              <li><a href="login.html">會員服務</a></li>
+              <li><a href="login.html">企業服務</a></li>
+            </ul>
+          </div>
+      
+          <!-- 關於 -->
+          <div class="footer-col">
+            <h4>About</h4>
+            <ul>
+              <li><a href="#">關於我們</a></li>
+            </ul>
+          </div>
+      
+          <!-- 社群與 APP -->
+          <div class="footer-col social-col">
+            <h4>關注我們</h4>
+            <div class="social-icons">
+              <a href="#"><i class="bi bi-facebook"></i></a>
+              <a href="#"><i class="bi bi-instagram"></i></a>
+              <a href="#"><i class="bi bi-line"></i></a>
+              <a href="#"><i class="bi bi-youtube"></i></a>
+            </div>
+          </div>
         </div>
-        <div class="socials">
-          <ul>
-            <li>
-              <a href="#"> <i class="bi bi-envelope"></i>Email </a>
-            </li>
-            <li>
-              <a href="#"> <i class="bi bi-facebook"></i>Facebook </a>
-            </li>
-            <li>
-              <a href="#"> <i class="bi bi-instagram"></i>Instagram </a>
-            </li>
-          </ul>
-        </div>
-        <div class="copyright">
-          <p>© 2025 All rights reserved.</p>
+      
+        <!-- 下方版權列 -->
+        <div class="footer-bottom">
+          <p>© 2025 TibaMe Online Learning. All rights reserved.</p>
         </div>
       </footer>
+      
     </div>
-
     <!-- GSAP 核心庫 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <!-- GSAP ScrollTrigger 插件 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js"></script>
     <!-- swiper輪播 -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="./js/all.js"></script>
+    <script>
+      const btn = document.querySelector('.hamburger');
+      const drawer = document.getElementById('mobileNav');
+      btn?.addEventListener('click', () => {
+        const open = drawer.classList.toggle('open');
+        btn.classList.toggle('is-open', open);
+        btn.setAttribute('aria-expanded', String(open));
+        drawer.setAttribute('aria-hidden', String(!open));
+      });
+    </script>
   </body>
 </html>
